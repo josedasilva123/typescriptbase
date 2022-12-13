@@ -1,10 +1,9 @@
-import './App.css';
-import CardPerson from './components/Person';
+import MainPage from './pages/Main';
 
 function App() {
   return (
     <div className="App">
-      <CardPerson name='Alex' age={32} hasPet={true} />
+        <MainPage />
     </div>
   );
 }
