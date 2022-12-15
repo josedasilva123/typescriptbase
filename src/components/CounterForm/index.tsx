@@ -4,8 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { counterFormSchema } from './counterFormSchema';
 import { CounterContext } from '../../contexts/CounterContext';
 import { tOperations } from '../../contexts/CounterContext/types';
+import Input from '../Input';
 
-interface iCounterFormValues{
+export interface iCounterFormValues{
    value: string;
    type: tOperations; 
 } 
@@ -21,15 +22,16 @@ const CounterForm = () => {
     }
   });
 
+  
   const submit: SubmitHandler<iCounterFormValues> = (data) => {
     const newOperation = { ...data, value: Number(data.value)} 
     operation(newOperation);
   }
+  
     
   return (
     <form onSubmit={handleSubmit(submit)}>
-        <input type="number" {...register("value")} />
-        {errors.value && <p>{errors.value.message}</p>}
+        <Input label="Número" id="name" type="number" register={register("value")} error={errors.value}/>        
         <select {...register("type")}>
             <option value="sum">Soma</option>
             <option value="sub">Subtração</option>
